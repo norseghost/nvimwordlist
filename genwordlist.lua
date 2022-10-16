@@ -7,3 +7,9 @@ local lists = {
     "hilites"; vim.fn.getcompletion("", "highlight"),
     "filetypes"; vim.fn.getcompletion("", "filetype"),
 }
+local words = {}
+for index, list in ipairs(lists) do
+    for _, word in pairs(list) do
+        words.insert(word)
+    end
+end
