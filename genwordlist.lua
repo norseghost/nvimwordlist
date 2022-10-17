@@ -1,15 +1,23 @@
-local commands = vim.api.nvim_get_commands({})
-local options = vim.api.nvim_get_all_options_info()
+local M = {}
+local loop = vim.loop
+local api = vim.api
+local fn = vim.fn
+
 local lists = {
-    "commands"; vim.fn.getcompletion("", "command"),
-    "options"; vim.fn.getcompletion("", "option"),
-    "events"; vim.fn.getcompletion("", "event"),
-    "hilites"; vim.fn.getcompletion("", "highlight"),
-    "filetypes"; vim.fn.getcompletion("", "filetype"),
+    fn.getcompletion("", "command"),
+    fn.getcompletion("", "option"),
+    fn.getcompletion("", "event"),
+    fn.getcompletion("", "highlight"),
+    fn.getcompletion("", "filetype"),
 }
-local words = {}
-for index, list in ipairs(lists) do
+local words = ""
+for _, list in pairs(lists) do
     for _, word in pairs(list) do
-        words.insert(word)
+        words = words .. word .. "\n"
     end
 end
+local wordfile = "/tmp/vimwords.lst"
+local wordlist = io.open(wordfile, "w+")
+wordlist:write(words)
+wordlist:close()
+
