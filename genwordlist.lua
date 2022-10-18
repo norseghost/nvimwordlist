@@ -1,6 +1,4 @@
 local M = {}
-local loop = vim.loop
-local api = vim.api
 local fn = vim.fn
 
 local lists = {
