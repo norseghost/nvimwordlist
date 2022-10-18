@@ -21,3 +21,6 @@ local wordlist = io.open(wordfile, "w+")
 wordlist:write(words)
 wordlist:close()
 
+spelldir = vim.call("spellfile#WritableSpellDir")
+
+vim.cmd("mkspell " .. spelldir .. "/vim " .. wordfile)
