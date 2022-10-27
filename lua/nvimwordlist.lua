@@ -22,7 +22,7 @@ local update_spell_file = function()
 
     local spelldir = vim.call("spellfile#WritableSpellDir")
 
-    vim.cmd("mkspell " .. spelldir .. "/vim " .. wordfile)
+    vim.cmd("silent mkspell! " .. spelldir .. "/vim " .. wordfile)
 end
 
 M.update = update_spell_file
