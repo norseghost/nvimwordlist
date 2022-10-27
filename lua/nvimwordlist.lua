@@ -26,3 +26,5 @@ local update_spell_file = function()
 end
 
 M.update = update_spell_file
+
+return M
