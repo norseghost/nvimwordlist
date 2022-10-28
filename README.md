@@ -11,8 +11,8 @@ Using Packer:
 ```lua
 use {
     "norseghost/nvimwordlist",
-    do = "NvimWordlistUpdate",
-    setup = function()
+    run = "NvimWordlistUpdate",
+    config = function()
         vim.opt.spelllang:append("vim")
     end
 }
@@ -28,3 +28,5 @@ The word list is made from (ab)using the `vim.fn.getcompletions()` function, and
 [ ] short option names
 [ ] option values
 [ ] configurable subsets for the list
+[ ] automatically set up spelllang for `.lua`, `.vim`, `.md` filetypes?
+[ ] (eventually) vim documentation
