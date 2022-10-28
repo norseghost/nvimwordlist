@@ -8,7 +8,7 @@ local lists = {
     fn.getcompletion("", "filetype"),
 }
 
-local update_spell_file = function()
+function M.update_spell_file()
     local words = ""
     for _, list in pairs(lists) do
         for _, word in pairs(list) do
@@ -24,7 +24,5 @@ local update_spell_file = function()
 
     vim.cmd("silent mkspell! " .. spelldir .. "/vim " .. wordfile)
 end
-
-M.update = update_spell_file
 
 return M
