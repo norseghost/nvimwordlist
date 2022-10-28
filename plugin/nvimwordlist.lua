@@ -11,5 +11,5 @@ local nvimwordlist = require("nvimwordlist")
 
 vim.api.nvim_create_user_command(
     "NvimWordlistUpdate",
-    nvimwordlist.update,
-    {})
+    nvimwordlist.update_spell_file,
+    { desc = "Update spellfile for Neovim words" })
