@@ -25,8 +25,8 @@ The word list is made from (ab)using the `vim.fn.getcompletions()` function, and
 
 ## To Do
 
-[ ] short option names
-[ ] option values
-[ ] configurable subsets for the list
-[ ] automatically set up spelllang for `.lua`, `.vim`, `.md` filetypes?
-[ ] (eventually) vim documentation
+- [ ] short option names
+- [ ] option values
+- [ ] configurable subsets for the list
+- [ ] automatically set up spelllang for `.lua`, `.vim`, `.md` filetypes?
+- [ ] (eventually) vim documentation
