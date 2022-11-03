@@ -1,6 +1,18 @@
 local M = {}
 local fn = vim.fn
 
+local function getcompletions()
+    to_complete = { "command", "option" }
+    completions = {}
+    for _, subcomplete in pairs(to_complete) do
+        for _, opt in pairs(vim.fn.getcompletion("", subcomplete)) do
+            for _, compl in pairs(vim.fn.getcompletion(opt .. "", "cmdline")) do
+                table.insert(completions, compl)
+            end
+        end
+    end
+end
+
 local function getshortopts()
     local shortopts = {}
     local options = vim.api.nvim_get_all_options_info()
@@ -18,8 +30,11 @@ local lists = {
     fn.getcompletion("", "event"),
     fn.getcompletion("", "highlight"),
     fn.getcompletion("", "filetype"),
-    getshortopts()
+    fn.getcompletion("", "color"),
+    fn.getcompletion("", "environment"),
+    fn.getcompletion("", "function"),
     getshortopts(),
+    getcompletions()
 }
 
 function M.update_spell_file()
@@ -30,13 +45,13 @@ function M.update_spell_file()
         end
     end
     local wordfile = "/tmp/vimwords.lst"
-    local wordlist = io.open(wordfile, "w+")
+    local wordlist = io.open(wordfile, "w")
     wordlist:write(words)
     wordlist:close()
 
     local spelldir = vim.call("spellfile#WritableSpellDir")
 
-    vim.cmd("silent mkspell! " .. spelldir .. "/vim " .. wordfile)
+    vim.cmd("mkspell! " .. spelldir .. "/vim " .. wordfile)
 end
 
 return M
