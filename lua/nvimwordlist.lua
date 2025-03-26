@@ -2,8 +2,8 @@ local M = {}
 local fn = vim.fn
 
 local function getcompletions()
-    to_complete = { "command", "option" }
-    completions = {}
+    local to_complete = { "command", "option" }
+    local completions = {}
     for _, subcomplete in pairs(to_complete) do
         for _, opt in pairs(vim.fn.getcompletion("", subcomplete)) do
             for _, compl in pairs(vim.fn.getcompletion(opt .. "", "cmdline")) do
